@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'register',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -98,7 +104,28 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+AUTHENTICATION_BACKKENDS =(
+    'django.contrib.auth.backends.ModelBackend',
+    'alluth.account.auth_backends.AuthhenticationBacked',
+)
 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+
+        ],
+        'AUTH_PARAMS': {
+            'ACCESS_TYPE': 'online'
+        },
+        'APP': {
+            'client_id': '364347600858-crodavd5sblg0401jp0a2srk2lfbofo7.apps.googleusercontent.com',
+            'secret': 'GJ_Fjamgxh7vbqFerGXW7jF9',
+            'key': 'AIzaSyCct5HykRHDUcnq-1NcX-wFqWAIleZ_8h4'
+        }
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -111,10 +138,13 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = True 
+
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+SITE_ID = 1
+LOGIN_REDIRECT_URL='/'
