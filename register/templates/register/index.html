@@ -9,6 +9,7 @@
     <h1>MY GOOGLE LOGIN PROJECT</h1>
     {% if user.is_authenticated %}
     <p> Welcome, {{ user.username}} !</p>
+    <a href="/accounts/logout">LogOut</a>
 
     {% else %}
     <h1> MY GOOGLE PROJECT </h1>

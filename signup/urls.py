@@ -23,5 +23,5 @@ urlpatterns = [
     path('',TemplateView.as_view(template_name="register/index.html")),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')), 
-    path("/logout", LogoutView.logout()),
+    path("/logout", LogoutView.logout),
 ]
