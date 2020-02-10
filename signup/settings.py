@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'register',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,6 +74,10 @@ TEMPLATES = [
         },
     },
 ]
+AUTHENTICATION_BACKENDS = ( 
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBacked',
+)
 
 WSGI_APPLICATION = 'signup.wsgi.application'
 
@@ -104,10 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-AUTHENTICATION_BACKKENDS =(
-    'django.contrib.auth.backends.ModelBackend',
-    'alluth.account.auth_backends.AuthhenticationBacked',
-)
+
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -117,12 +120,12 @@ SOCIALACCOUNT_PROVIDERS = {
 
         ],
         'AUTH_PARAMS': {
-            'ACCESS_TYPE': 'online'
+            'ACCESS_TYPE': 'online '
         },
         'APP': {
             'client_id': '364347600858-crodavd5sblg0401jp0a2srk2lfbofo7.apps.googleusercontent.com',
             'secret': 'GJ_Fjamgxh7vbqFerGXW7jF9',
-            'key': 'AIzaSyCct5HykRHDUcnq-1NcX-wFqWAIleZ_8h4'
+            'key': 'AIzaSyCct5HykRHDUcnq-1NcX-wFqWAIleZ_8h4'     
         }
     }
 }

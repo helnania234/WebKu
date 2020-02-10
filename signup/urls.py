@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-from allauth.account.views.LogoutView 
+from allauth.account.views import LogoutView
 
 urlpatterns = [
     path('accounts/' , include('allauth.urls')),
     path('',TemplateView.as_view(template_name="register/index.html")),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')), 
-
+    path("/logout", LogoutView.logout()),
 ]
